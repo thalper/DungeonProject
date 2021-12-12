@@ -1,0 +1,69 @@
+Map:
+    Room:
+        Name: Entrance
+        Description: Room - Entrance
+        Type: regular
+        Item: axe
+        north: Main
+    Room:
+        Name: Main
+        Description: Room - Main
+        Type: regular
+        Container: container
+        Creature: dragon
+        Item: sword
+        north: Staircase
+        south: Entrance
+    Room:
+        Name: Staircase
+        Description: Room - Staircase (exit)
+        Type: exit
+        Container: bottle
+        Creature: giant
+        south: Main
+    Item:
+        Name: sword
+        Turnon:
+            Print: 
+            Action: 
+            Used: 0
+    Item:
+        Name: note
+        Writing: You found the exit :-)
+        Turnon:
+            Print: 
+            Action: 
+            Used: 0
+    Item:
+        Name: axe
+        Turnon:
+            Print: 
+            Action: 
+            Used: 0
+    Container:
+        Name: bottle
+        Item: note
+    Container:
+        Name: container
+    Creature:
+        Name: dragon
+        Trigger:
+            Permanent: 0
+            Used: 0
+            Command: attack dragon with axe
+            Print: the axe is quite sharp
+            Condition:
+                Has: 1
+                Object: axe
+                Status: sharp
+    Creature:
+        Name: giant
+        Trigger:
+            Permanent: 0
+            Used: 0
+            Command: 
+            Print: axe got sharper
+            Condition:
+                Has: 1
+                Object: note
+                Owner: inventory

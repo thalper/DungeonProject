@@ -1,0 +1,48 @@
+Map:
+    Room:
+        Name: Entrance
+        Description: Room - Entrance
+        Type: regular
+        Container: closet
+        north: Main
+    Room:
+        Name: Main
+        Description: Room - Main
+        Type: regular
+        north: Staircase
+        south: Entrance
+    Room:
+        Name: Staircase
+        Description: Room - Staircase (exit)
+        Type: exit
+        Container: container
+        Container: bottle
+        south: Main
+    Item:
+        Name: sword
+        Turnon:
+            Print: 
+            Action: 
+            Used: 0
+    Item:
+        Name: note
+        Writing: You found the exit :-)
+        Turnon:
+            Print: 
+            Action: 
+            Used: 0
+    Container:
+        Name: closet
+        Status: closed
+        Item: sword
+    Container:
+        Name: bottle
+        Status: closed
+        Item: note
+    Container:
+        Name: container
+        Status: closed
+        Accept: sword
+    Container:
+        Name: unused
+        Status: closed

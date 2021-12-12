@@ -1,0 +1,112 @@
+Enter filename: xml/sample.xml
+Map Constructor
+Element Constructor with name Entrance
+Room Constructor with name Entrance
+Adding Room Entrance to Map
+Set Element description to You find yourself at the mouth of a cave and decide that in spite of common sense and any sense of self preservation that you're going to go exploring north into it. It's a little dark, but luckily there are some torches on the wall.
+Element Constructor with name torch
+Item Constructor with name torch
+Adding Item torch to Map
+Added Item torch to Room
+Trigger Constructor
+Set Trigger permanent to 1
+Set Trigger command to n
+Condition Constructor
+Set Condition Has to 0
+Set Condition Object Name to torch
+Set Condition Owner Name to inventory
+Added Condition to Trigger
+Added Trigger print of *stumble* need some light...
+Added trigger to Element
+Element Constructor with name MainCavern
+Room Constructor with name MainCavern
+Adding Room MainCavern to Map
+Set Room Entrance north border to Room MainCavern
+Using existing Room MainCavern from Map
+Set Element description to A huge cavern surrounds you with a locked door to the north, a chest in the center, and a very dark corner...
+Element Constructor with name chest
+Container Constructor with name chest
+Adding Container chest to Map
+Added Container chest to Room
+Element Constructor with name lock
+Container Constructor with name lock
+Adding Container lock to Map
+Added Container lock to Room
+Element Constructor with name gnome
+Creature Constructor with name gnome
+Adding Creature gnome to Map
+Added Creature gnome to Room
+Using existing Room Entrance from Map
+Set Room MainCavern south border to Room Entrance
+Element Constructor with name Staircase
+Room Constructor with name Staircase
+Adding Room Staircase to Map
+Set Room MainCavern north border to Room Staircase
+Trigger Constructor
+Set Trigger command to n
+Set Trigger permanent to 1
+Condition Constructor
+Set Condition Object Name to lock
+Set Condition Status to locked
+Added Condition to Trigger
+Added Trigger print of lock needs a key... not to mention you don't want to get too close to that side of the room... there's something in that corner...
+Added trigger to Element
+Using existing Room Staircase from Map
+Set Room type to exit
+Set Element description to You found the exit!
+Using existing Room MainCavern from Map
+Set Room Staircase south border to Room MainCavern
+Using existing Item torch from Map
+Set Item writing to next to a small button it reads "push for big flame"
+Set Element status to lit
+Trigger Constructor
+Added Trigger print of the torch has erupted into a menacing inferno
+Added Trigger action of Update torch to inferno
+Set Item turnon
+Element Constructor with name explosive
+Item Constructor with name explosive
+Adding Item explosive to Map
+Set Item writing to turn on for boom :-). Warning! Keep away from gnomes!
+Set Element status to idle
+Trigger Constructor
+Added Trigger print of you hear ticking...
+Added Trigger action of Update explosive to ticking
+Set Item turnon
+Element Constructor with name key
+Item Constructor with name key
+Adding Item key to Map
+Set Item writing to Exit
+Using existing Container chest from Map
+Using existing Item explosive from Map
+Added Item explosive to Container
+Using existing Container lock from Map
+Set Element status to locked
+Added Container accept value of key
+Trigger Constructor
+Condition Constructor
+Set Condition Has to 1
+Set Condition Object Name to key
+Set Condition Owner Name to lock
+Added Condition to Trigger
+Added Trigger print of The lock drops off and the door opens
+Added Trigger action of Update lock to unlocked
+Added trigger to Element
+Using existing Creature gnome from Map
+Added Creature vulnerability of explosive
+Trigger Constructor
+Condition Constructor
+Set Condition Object Name to explosive
+Set Condition Status to ticking
+Added Condition to Trigger
+Added Trigger print of A tiny squeek is uttered from the tiny and, although scary looking, quite innocent creature before it vanishes in a very loud explosion. Tragic, but you find he was sitting on a key!
+Added Trigger action of Add key to MainCavern
+Added Trigger action of Delete gnome
+Set Creature attack
+Trigger Constructor
+Set Trigger permanent to 0
+Condition Constructor
+Set Condition Object Name to torch
+Set Condition Status to inferno
+Added Condition to Trigger
+Added Trigger print of You see a gnome in the dark corner... watching you with its super pointy hat...
+Added trigger to Element

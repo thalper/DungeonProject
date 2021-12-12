@@ -1,0 +1,98 @@
+Map:
+    Room:
+        Name: Entrance
+        Description: You find yourself at the mouth of a cave and decide that in spite of common sense and any sense of self preservation that you're going to go exploring north into it. It's a little dark, but luckily there are some torches on the wall.
+        Type: regular
+        Item: torch
+        north: MainCavern
+        Trigger:
+            Permanent: 1
+            Used: 0
+            Command: n
+            Print: *stumble* need some light...
+            Condition:
+                Has: 0
+                Object: torch
+                Owner: inventory
+    Room:
+        Name: MainCavern
+        Description: A huge cavern surrounds you with a locked door to the north, a chest in the center, and a very dark corner...
+        Type: regular
+        Container: chest
+        Container: lock
+        Creature: gnome
+        north: Staircase
+        south: Entrance
+        Trigger:
+            Permanent: 1
+            Used: 0
+            Command: n
+            Print: lock needs a key... not to mention you don't want to get too close to that side of the room... there's something in that corner...
+            Condition:
+                Has: 1
+                Object: lock
+                Status: locked
+    Room:
+        Name: Staircase
+        Description: You found the exit!
+        Type: exit
+        south: MainCavern
+    Item:
+        Name: torch
+        Status: lit
+        Writing: next to a small button it reads "push for big flame"
+        Turnon:
+            Print: the torch has erupted into a menacing inferno
+            Action: Update torch to inferno
+            Used: 0
+    Item:
+        Name: explosive
+        Status: idle
+        Writing: turn on for boom :-). Warning! Keep away from gnomes!
+        Turnon:
+            Print: you hear ticking...
+            Action: Update explosive to ticking
+            Used: 0
+    Item:
+        Name: key
+        Writing: Exit
+        Turnon:
+            Print: 
+            Action: 
+            Used: 0
+    Container:
+        Name: chest
+        Status: closed
+        Item: explosive
+    Container:
+        Name: lock
+        Status: locked
+        Accept: key
+        Trigger:
+            Permanent: 0
+            Used: 0
+            Command: 
+            Print: The lock drops off and the door opens
+            Condition:
+                Has: 1
+                Object: key
+                Owner: lock
+    Creature:
+        Name: gnome
+        Trigger:
+            Permanent: 0
+            Used: 0
+            Command: 
+            Print: You see a gnome in the dark corner... watching you with its super pointy hat...
+            Condition:
+                Has: 1
+                Object: torch
+                Status: inferno
+        Attack:
+            Print: A tiny squeek is uttered from the tiny and, although scary looking, quite innocent creature before it vanishes in a very loud explosion. Tragic, but you find he was sitting on a key!
+            Condition:
+                Has: 1
+                Object: explosive
+                Status: ticking
+            Action: Add key to MainCavern
+            Action: Delete gnome
